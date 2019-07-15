@@ -1,8 +1,10 @@
 import React from 'react';
+import { renderChangePercentage } from '../../helpers';
 import './Table.css';
 
 const Table = props => {
   const { currencies } = props;
+  console.log(currencies);
   return (
     <div className='Table-container'>
       <table className='Table'>
@@ -11,7 +13,7 @@ const Table = props => {
             <th>Cryptocurrency</th>
             <th>Price</th>
             <th>Market Cap</th>
-            {/* <th>24H Change</th> */}
+            <th>24H Change</th>
           </tr>
         </thead>
         <tbody className='Table-body'>
@@ -27,13 +29,13 @@ const Table = props => {
                 </td>
                 <td>
                   <span className='Table-dollar'>$</span>
-                  {currency.price}
+                  {currency.priceUsd}
                 </td>
                 <td>
                   <span className='Table-dollar'>$</span>
-                  {currency.marketCap}
+                  {currency.marketCapUsd}
                 </td>
-                {/* <td>{renderChangePercentage(currency.percentChange24h)}</td> */}
+                <td>{renderChangePercentage(currency.changePercent24Hr)}</td>
               </tr>
             );
           })}
